@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment and sensitive secrets
+.env
+.env.*
+!.env.example
+
+# Local OS files
+.DS_Store
+Thumbs.db
+
+# Storage, cache, and downloaded coursework
+data/
+cache/
+output/
+scratch/
+*.pdf
+*.zip
+*.tar.gz
+
+# Logs and runtime dumps
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*

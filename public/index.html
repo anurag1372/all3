@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Platform — All3 Hub</title>
+  <meta name="description" content="Unified connection monitor and agentic context hub for Canvas LMS, Gradescope, and EdStem">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Horizontal Top Navbar -->
+    <header class="header">
+      <div class="header-inner">
+        <!-- Left: Logo & Title -->
+        <div class="header-branding">
+          <a href="/" class="brand-link">
+            <div class="logo-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="brand-text-group">
+              <span class="header-title">All3 Platform</span>
+              <span class="badge-version">v1.0</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Center: Platform badges -->
+        <div class="header-center">
+          <div class="platform-chips">
+            <span class="chip-item canvas">Canvas</span>
+            <span class="chip-sep">•</span>
+            <span class="chip-item gradescope">Gradescope</span>
+            <span class="chip-sep">•</span>
+            <span class="chip-item edstem">Ed Discussion</span>
+          </div>
+        </div>
+
+        <!-- Right: Server Status, Setup Drawer & GitHub -->
+        <div class="header-actions">
+          <div class="server-status" id="server-status" title="Local loopback binding status">
+            <span class="status-dot"></span>
+            <span class="status-text">127.0.0.1:3000</span>
+          </div>
+
+          <button class="nav-action-btn" id="btn-toggle-setup" onclick="toggleSetupSidebar()" title="Open Step-by-Step Setup Guide">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span>Setup Guide</span>
+          </button>
+
+          <a href="https://github.com/anurag1372/all3" target="_blank" rel="noopener noreferrer" class="nav-action-btn github-btn" title="Developer GitHub / Project Repository">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span>anurag1372</span>
+            <span class="external-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Platform Cards -->
+      <div class="cards-grid">
+        <!-- Canvas Card -->
+        <div class="platform-card" id="card-canvas" data-platform="canvas">
+          <div class="card-header">
+            <div class="card-icon canvas-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-title-group">
+              <h2 class="card-title">Canvas LMS</h2>
+              <span class="card-badge" id="badge-canvas">Checking...</span>
+            </div>
+          </div>
+          <p class="card-description">Official REST API adapter. Module hierarchy, syllabus, and slide PDF text extraction.</p>
+          <div class="card-meta">
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L1 4l6 3 6-3-6-3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M1 10l6 3 6-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 7l6 3 6-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              REST Token
+            </span>
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4V2.5a3 3 0 016 0V4" stroke="currentColor" stroke-width="1.2"/></svg>
+              PDF Text Cache
+            </span>
+          </div>
+          <div class="card-result visible" id="result-canvas">
+            <div class="result-summary loading"><span class="spinner"></span> Connecting...</div>
+          </div>
+        </div>
+
+        <!-- Gradescope Card -->
+        <div class="platform-card" id="card-gradescope" data-platform="gradescope">
+          <div class="card-header">
+            <div class="card-icon gradescope-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="card-title-group">
+              <h2 class="card-title">Gradescope</h2>
+              <span class="card-badge" id="badge-gradescope">Checking...</span>
+            </div>
+          </div>
+          <p class="card-description">Session cookie crawler. Automatic zero-click synchronization via Chrome extension.</p>
+          <div class="card-meta">
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L1 4l6 3 6-3-6-3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M1 10l6 3 6-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 7l6 3 6-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Auto-Synced
+            </span>
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4V2.5a3 3 0 016 0V4" stroke="currentColor" stroke-width="1.2"/></svg>
+              Live Scraper
+            </span>
+          </div>
+          <div class="card-actions">
+            <button class="interactive-action-btn" id="btn-gradescope-pending" onclick="loadPendingAssignments()">
+              <div class="btn-left">
+                <span class="btn-icon">⏱️</span>
+                <span class="btn-text">Show all pending</span>
+              </div>
+              <span class="btn-action-arrow">→</span>
+            </button>
+          </div>
+          <div class="card-result visible" id="result-gradescope">
+            <div class="result-summary loading"><span class="spinner"></span> Connecting...</div>
+          </div>
+        </div>
+
+        <!-- Ed Discussion Card -->
+        <div class="platform-card" id="card-edstem" data-platform="edstem">
+          <div class="card-header">
+            <div class="card-icon edstem-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="card-title-group">
+              <h2 class="card-title">Ed Discussion</h2>
+              <span class="card-badge" id="badge-edstem">Checking...</span>
+            </div>
+          </div>
+          <p class="card-description">API feed parser. Rolling historical thread archive and Resource Center PDF indexing.</p>
+          <div class="card-meta">
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L1 4l6 3 6-3-6-3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M1 10l6 3 6-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 7l6 3 6-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Token Auth
+            </span>
+            <span class="meta-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4V2.5a3 3 0 016 0V4" stroke="currentColor" stroke-width="1.2"/></svg>
+              Quarter Archive
+            </span>
+          </div>
+          <div class="card-actions">
+            <button class="interactive-action-btn" id="btn-edstem-threads" onclick="loadRecentThreads()">
+              <div class="btn-left">
+                <span class="btn-icon">💬</span>
+                <span class="btn-text">last 30 threads</span>
+              </div>
+              <span class="btn-action-arrow">→</span>
+            </button>
+          </div>
+          <div class="card-result visible" id="result-edstem">
+            <div class="result-summary loading"><span class="spinner"></span> Connecting...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Inspector Panel -->
+      <section class="inspector" id="inspector">
+        <div class="inspector-header">
+          <h2 class="inspector-title" id="inspector-title">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 5h8M5 9h6M5 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Data Inspector
+          </h2>
+          <div id="inspector-actions">
+            <button class="btn btn-ghost btn-sm" onclick="clearInspector()">Clear View</button>
+          </div>
+        </div>
+        <div class="inspector-body" id="inspector-body">
+          <div class="inspector-empty">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 20h16M16 28h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <p>Click <strong>"Show all pending"</strong> or <strong>"last 30 threads"</strong> above to inspect live data</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Quick Setup Section -->
+      <section class="setup-section" id="setup-section">
+        <div class="setup-section-header">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 20px;">⚙️</span>
+            <div>
+              <h3 class="setup-title">Quick Setup & Credential Guide</h3>
+              <p class="setup-subtitle">Self-contained loopback configuration. Credentials stay private on your machine in <code>.env</code>.</p>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-ghost" onclick="toggleSetupSidebar()">Open Drawer View ↗</button>
+        </div>
+
+        <div class="setup-grid">
+          <!-- Step 1: Canvas -->
+          <div class="setup-card">
+            <div class="setup-step-num">1</div>
+            <div class="setup-card-content">
+              <h4>1. Canvas LMS API Token</h4>
+              <p>Generate a Personal Access Token:</p>
+              <ol>
+                <li>Direct link: <a href="https://canvas.eee.uci.edu/profile/settings" target="_blank" rel="noopener noreferrer" class="setup-direct-link">https://canvas.eee.uci.edu/profile/settings ↗</a></li>
+                <li>Scroll down to <strong>Approved Integrations</strong> and click <strong>+ New Access Token</strong>.</li>
+                <li>Add purpose <code>All3 Integration</code> and click <strong>Generate</strong>.</li>
+                <li>Paste into <code>.env</code> as:</li>
+              </ol>
+              <div class="setup-code-box">CANVAS_API_TOKEN=your_token_here</div>
+            </div>
+          </div>
+
+          <!-- Step 2: EdStem -->
+          <div class="setup-card">
+            <div class="setup-step-num">2</div>
+            <div class="setup-card-content">
+              <h4>2. Ed Discussion API Token</h4>
+              <p>Generate your discussion token:</p>
+              <ol>
+                <li>Direct link: <a href="https://edstem.org/us/settings/api-tokens" target="_blank" rel="noopener noreferrer" class="setup-direct-link">https://edstem.org/us/settings/api-tokens ↗</a></li>
+                <li>Click <strong>Create Token</strong>.</li>
+                <li>Copy the token string and paste into <code>.env</code>:</li>
+              </ol>
+              <div class="setup-code-box">EDSTEM_API_TOKEN=your_token_here</div>
+            </div>
+          </div>
+
+          <!-- Step 3: Gradescope Extension -->
+          <div class="setup-card">
+            <div class="setup-step-num">3</div>
+            <div class="setup-card-content">
+              <h4>3. Gradescope Zero-Click Chrome Extension</h4>
+              <p>No manual cookie copying required:</p>
+              <ol>
+                <li>Open Chrome and navigate to <code>chrome://extensions/</code>.</li>
+                <li>Toggle on <strong>Developer mode</strong> in the top-right corner.</li>
+                <li>Click <strong>Load unpacked</strong> in the top-left corner.</li>
+                <li>Select the <code>extension/</code> folder inside this repository.</li>
+                <li>Visit <code>gradescope.com</code> once. The extension auto-detects your session and posts it to <code>127.0.0.1:3000</code>. You can also click on <strong>Sync Now</strong> in the extension popup.</li>
+              </ol>
+              <div class="setup-code-box">GRADESCOPE_COOKIE="auto_persisted"</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Setup Secondary Row: Step 4 and Step 5 Side-by-Side -->
+        <div class="setup-secondary-grid">
+          <!-- Step 4: Local Security Guarantees -->
+          <div class="setup-card">
+            <div class="setup-step-num">4</div>
+            <div class="setup-card-content">
+              <h4>4. Local Security Guarantees</h4>
+              <p>This integration is bound exclusively to <code>127.0.0.1</code> loopback. Outside devices on your Wi-Fi network cannot connect to port 3000, and your course data / cache / outputs are strictly ignored in <code>.gitignore</code>.</p>
+              <div style="margin-top: 12px; font-size: 0.78rem; color: var(--text-tertiary); line-height: 1.6;">
+                <div style="color: var(--success); font-weight: 550; margin-bottom: 4px;">✓ Local Loopback Security:</div>
+                • Private tokens and cookies stored exclusively on local disk<br>
+                • Zero remote telemetry or third-party cloud routing<br>
+                • Bound to loopback address (inaccessible across LAN/Wi-Fi)
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: What Final .env Looks Like -->
+          <div class="setup-card env-preview-card">
+            <div class="setup-step-num">5</div>
+            <div class="setup-card-content">
+              <div class="env-preview-header">
+                <h4 style="margin: 0;">5. What Final <code>.env</code> Looks Like</h4>
+                <span class="badge-env-status">File: <code>.env</code> at project root</span>
+              </div>
+              <p>Once all three platforms are configured, your completed <code>.env</code> file will look like this:</p>
+              <pre class="env-code-block"><code># Canvas LMS (Personal Access Token)
+CANVAS_API_TOKEN=7~abcdef1234567890abcdef1234567890
+
+# Ed Discussion (API Token from settings)
+EDSTEM_API_TOKEN=ed_tok_abcdef1234567890abcdef123456
+
+# Gradescope (Auto-populated by Chrome Extension or paste manual)
+GRADESCOPE_COOKIE="signed_token=...; _gradescope_session=..."
+
+# Local Server Loopback Port (Optional, defaults to 3000)
+PORT=3000</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Slide-over Setup Sidebar Drawer -->
+    <div class="sidebar-backdrop" id="setup-backdrop" onclick="toggleSetupSidebar()"></div>
+    <aside class="sidebar-drawer" id="setup-sidebar">
+      <div class="sidebar-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 18px;">⚙️</span>
+          <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0;">Platform Setup & Configuration</h3>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSetupSidebar()" title="Close Setup Drawer">✕</button>
+      </div>
+
+      <div class="sidebar-body">
+        <div class="status-summary-box" id="drawer-status-box">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">Active Integration Status:</div>
+          <div class="status-item" id="drawer-status-canvas">Canvas Token: <span class="badge-status">checking...</span></div>
+          <div class="status-item" id="drawer-status-edstem">EdStem Token: <span class="badge-status">checking...</span></div>
+          <div class="status-item" id="drawer-status-gradescope">Gradescope Cookies: <span class="badge-status">checking...</span></div>
+        </div>
+
+        <div class="setup-drawer-step">
+          <h4>1. Canvas LMS API Token</h4>
+          <p>Generate a Personal Access Token:</p>
+          <ol>
+            <li>Direct link: <a href="https://canvas.eee.uci.edu/profile/settings" target="_blank" rel="noopener noreferrer" class="setup-direct-link">https://canvas.eee.uci.edu/profile/settings ↗</a></li>
+            <li>Scroll down to <strong>Approved Integrations</strong> and click <strong>+ New Access Token</strong>.</li>
+            <li>Add purpose <code>All3 Integration</code> and click <strong>Generate</strong>.</li>
+            <li>Paste into <code>.env</code> as:</li>
+          </ol>
+          <pre class="sidebar-code">CANVAS_API_TOKEN=your_token_here</pre>
+        </div>
+
+        <div class="setup-drawer-step">
+          <h4>2. Ed Discussion API Token</h4>
+          <p>Generate your discussion token:</p>
+          <ol>
+            <li>Direct link: <a href="https://edstem.org/us/settings/api-tokens" target="_blank" rel="noopener noreferrer" class="setup-direct-link">https://edstem.org/us/settings/api-tokens ↗</a></li>
+            <li>Click <strong>Create Token</strong>.</li>
+            <li>Copy the token string and paste into <code>.env</code>:</li>
+          </ol>
+          <pre class="sidebar-code">EDSTEM_API_TOKEN=your_token_here</pre>
+        </div>
+
+        <div class="setup-drawer-step">
+          <h4>3. Gradescope Zero-Click Chrome Extension</h4>
+          <p>No manual cookie copying required:</p>
+          <ol>
+            <li>Open Chrome and navigate to <code>chrome://extensions/</code>.</li>
+            <li>Toggle on <strong>Developer mode</strong> in the top-right corner.</li>
+            <li>Click <strong>Load unpacked</strong> in the top-left corner.</li>
+            <li>Select the <code>extension/</code> folder inside this repository.</li>
+            <li>Visit <code>gradescope.com</code> once. The extension auto-detects your session and posts it to <code>127.0.0.1:3000</code>. You can also click on <strong>Sync Now</strong> in the extension popup.</li>
+          </ol>
+        </div>
+
+        <div class="setup-drawer-step">
+          <h4>4. Local Security Guarantees</h4>
+          <p>This integration is bound exclusively to <code>127.0.0.1</code> loopback. Outside devices on your Wi-Fi network cannot connect to port 3000, and your course data / cache / outputs are strictly ignored in <code>.gitignore</code>.</p>
+        </div>
+
+        <!-- Final .env File Example (Drawer) -->
+        <div class="setup-drawer-step">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px;">
+            <h4 style="margin: 0;">5. Final <code>.env</code> File Example</h4>
+            <span class="badge-env-status">Project Root</span>
+          </div>
+          <p>Here is what your finished <code>.env</code> file looks like:</p>
+          <pre class="sidebar-code"><code># Canvas LMS (Personal Access Token)
+CANVAS_API_TOKEN=7~abcdef1234567890abcdef1234567890
+
+# Ed Discussion (API Token from settings)
+EDSTEM_API_TOKEN=ed_tok_abcdef1234567890abcdef123456
+
+# Gradescope (Auto-populated by Chrome Extension or paste manual)
+GRADESCOPE_COOKIE="signed_token=...; _gradescope_session=..."
+
+# Local Server Loopback Port (Optional, defaults to 3000)
+PORT=3000</code></pre>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
