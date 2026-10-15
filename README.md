@@ -1,5 +1,9 @@
 # 🎓 All3 — Academic Platform Integration Hub
 
+# Agent demo:
+
+# Setup:
+
 <div align="center">
 
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
@@ -120,22 +124,6 @@ Open your browser and navigate to:
 ```
 http://127.0.0.1:3000
 ```
-
----
-
-## 🖥️ Interactive Dashboard Features
-
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│  🎓 All3 Platform  v1.0   •  [Canvas]  [Gradescope]  [EdStem]   •   Setup   anurag1372 ↗│
-└────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-* **Horizontal Platform Status Chips**: Real-time status for Canvas, Gradescope, and Ed Discussion.
-* **`Show all pending →`**: Strictly isolates unsubmitted assignments (`No Submission`) across all your active Gradescope courses with accurate time remaining (e.g. `1 day, 22 hours left`), due dates, and direct submission links.
-  - Features dual sorting: **Default Course Order** vs **Sort by Time (Urgent First)**.
-* **`last 30 threads →`**: Fetches the 30 most recent Ed Discussion posts across your courses with complete plaintext post bodies, reply counts, author names, and answer badges.
-* **Setup Guide Drawer**: Click **Setup Guide** in the navbar to open an interactive slide-over drawer with real-time token health checks and quick links.
 
 ---
 
