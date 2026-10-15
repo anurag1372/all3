@@ -1,9 +1,9 @@
 # 🎓 All3 — Academic Platform Integration Hub
 
-# Agent demo:
+# Agent demo (watch in 1.5x / 2x ):
 https://github.com/user-attachments/assets/50818b20-7d90-4539-a37b-b8bac52e3bdc
 
-# Setup:
+# Setup (watch in 1.5x / 2x ):
 https://github.com/user-attachments/assets/92436b39-c04a-4015-8b91-18c77c30a926
 
 
