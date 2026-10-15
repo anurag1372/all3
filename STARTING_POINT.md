@@ -20,9 +20,9 @@ If you are an AI assistant navigating this repository on behalf of a student, **
    Students constantly bounce between these three silos. `all3` unifies them into local JSON endpoints and structured markdown files in `output/` so that **you (the AI)** can directly access lecture text, track deadlines, search discussion clarifications, and help the student study.
 3. **Where does data live?**
    - **Secrets**: `all3/.env` (Canvas token, EdStem token, Gradescope cookies). Never leak these in chat.
-   - **Runtime Cache**: `all3/cache/` (parsed slide texts, historical thread archive). Managed automatically by [cache.js](file:///Users/anuragsingh/Desktop/all3/cache.js).
-   - **Deliverables & Summaries**: `all3/output/<CourseName>/` (structured markdown course folders). Managed by [output.js](file:///Users/anuragsingh/Desktop/all3/output.js).
-   - **Live API Gateway**: `http://127.0.0.1:3000/api/...` served by [server.js](file:///Users/anuragsingh/Desktop/all3/server.js).
+   - **Runtime Cache**: `all3/cache/` (parsed slide texts, historical thread archive). Managed automatically by [cache.js](./cache.js).
+   - **Deliverables & Summaries**: `all3/output/<CourseName>/` (structured markdown course folders). Managed by [output.js](./output.js).
+   - **Live API Gateway**: `http://127.0.0.1:3000/api/...` served by [server.js](./server.js).
 
 ---
 
