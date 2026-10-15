@@ -1,7 +1,7 @@
 # 🎓 All3 — Academic Platform Integration Hub
 
 # Agent demo:
-
+https://youtu.be/RNrRjSUfryY
 # Setup:
 
 <div align="center">
